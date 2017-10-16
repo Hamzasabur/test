@@ -1,0 +1,23 @@
+image:
+     selenium/standalone-chrome
+
+
+stages:
+  - test
+  - report
+
+test_suite_1:
+  allow_failure: false
+  stage: test
+  
+  script:
+    - java -jar test.jar
+  when: on_success
+  allow_failure: false
+
+
+
+send_report:
+  stage: report
+  script:
+    - python send_report.py
